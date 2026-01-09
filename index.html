@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Standard Matrix Generator</title>
+ <link rel="stylesheet" href="design.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.3.2/math.js"></script>
+</head>
+<body>
+ <div class="container">
+   <div class="title">Standard Matrix Generator</div>
+
+   <div class="step" id="step1">
+     <div class="subtitle">Step 1: Enter Dimensions</div>
+     <p>Maximum of 5 dimensions only (n, m ≤ 5).</p>
+     <div class="row">
+       <span class="label">Domain dimension (n):</span>
+       <input type="number" name="n" id="domain" placeholder="1 - 5" min="1" max="5">
+     </div>
+     <div class="row">
+       <span class="label">Codomain dimension (m):</span>
+       <input type="number" name="m" id="codomain" min="1" max="5" placeholder="1 - 5">
+     </div>
+     <button onclick="setDimensions()">Set Dimensions</button>
+   </div>
+
+   <div class="step" id="step2" style="display:none;">
+     <div class="subtitle">Step 2a: Enter basis vectors (b₁,b₂,...,bₙ)</div>
+     <div id="basisInputs"></div>
+
+     <div class="subtitle">Step 2b: Enter images (T(b₁),..., T(bₙ))</div>
+     <div id="imageInputs"></div>
+
+     <button onclick="generateMatrix()">Generate Standard Matrix</button>
+   </div>
+
+   <div class="step" id="result" style="display:none;">
+     <div class="subtitle">Standard Matrix Result</div>
+     <div id="matrixOutput"></div>
+   </div>
+ </div>
+
+ <script src="script.js"></script>
+</body>
+</html>
