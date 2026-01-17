@@ -19,7 +19,7 @@
        <input type="number" name="n" id="domain" placeholder="1 - 5" min="1" max="5">
      </div>
      <div class="row">
-       <span class="label">Codomain dimension (m):</span>
+       <span class="label">Co-domain dimension (m):</span>
        <input type="number" name="m" id="codomain" min="1" max="5" placeholder="1 - 5">
      </div>
      <button onclick="setDimensions()">Set Dimensions</button>
@@ -32,12 +32,14 @@
      <div class="subtitle">Step 2b: Enter images (T(b₁),..., T(bₙ))</div>
      <div id="imageInputs"></div>
 
-     <button onclick="generateMatrix()">Generate Standard Matrix</button>
+      <button onclick="generateMatrix()">Calculate Standard Matrix</button>
+     <button onclick="ResetInputBasis()">Reset Input</button>
    </div>
 
    <div class="step" id="result" style="display:none;">
      <div class="subtitle">Standard Matrix Result</div>
      <div id="matrixOutput"></div>
+     <button onclick="ResetMatrix()">Calculate New Matrix</button>
    </div>
  </div>
 
@@ -91,6 +93,20 @@ function buildInputs() {
   }
   imageTable += '</table>';
   imageDiv.innerHTML = imageTable;
+}
+
+function ResetInputBasis() {
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      document.getElementById(`b${i}_${j}`).value = "";
+    }
+    for (let i = 0; i < m; i++) {
+      for (let j = 0; j < n; j++) {
+        document.getElementById(`t${i}_${j}`).value = "";
+      }
+    }
+  }
+  document.getElementById('result').style.display = 'none';
 }
 
 function generateMatrix() {
